@@ -151,7 +151,6 @@ public class MainWindow extends UiPart<Stage> {
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(dataFilePath);
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
-
     }
 
     /**
@@ -159,19 +158,19 @@ public class MainWindow extends UiPart<Stage> {
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {
         Rectangle2D visualBounds = getTargetVisualBounds(guiSettings);
-    
+
         primaryStage.setMinHeight(
                 Math.min(primaryStage.getMinHeight(), visualBounds.getHeight()));
         primaryStage.setMinWidth(
                 Math.min(primaryStage.getMinWidth(), visualBounds.getWidth()));
-    
+
         double windowHeight = clampWindowDimension(
                 guiSettings.getWindowHeight(), primaryStage.getMinHeight(), visualBounds.getHeight());
         double windowWidth = clampWindowDimension(
                 guiSettings.getWindowWidth(), primaryStage.getMinWidth(), visualBounds.getWidth());
         primaryStage.setHeight(windowHeight);
         primaryStage.setWidth(windowWidth);
-    
+
         Point windowCoordinates = guiSettings.getWindowCoordinates();
         if (windowCoordinates != null) {
             primaryStage.setX(clampWindowCoordinate(windowCoordinates.getX(),
@@ -196,9 +195,9 @@ public class MainWindow extends UiPart<Stage> {
 
     /** Clamps a requested window dimension between the supported minimum and available screen dimension. */
     static double clampWindowDimension(double requestedSize,
-        double minimumSize, double availableSize) {
-    double effectiveMinimum = Math.min(minimumSize, availableSize);
-    return Math.max(effectiveMinimum, Math.min(requestedSize, availableSize));
+                                       double minimumSize, double availableSize) {
+        double effectiveMinimum = Math.min(minimumSize, availableSize);
+        return Math.max(effectiveMinimum, Math.min(requestedSize, availableSize));
     }
 
     /** Clamps a saved window coordinate within the available screen-axis range. */
